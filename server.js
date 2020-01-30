@@ -4,11 +4,11 @@ const fs=require("fs")
 const formidable=require("formidable")
 const path=require("path")
 var Rollbar = require("rollbar");
-var rollbar = new Rollbar({
-  accessToken: '64ec64629ffb4471808edcd58c6dceb9',
-  captureUncaught: true,
-  captureUnhandledRejections: true
-});
+// var rollbar = new Rollbar({
+//   accessToken: '64ec64629ffb4471808edcd58c6dceb9',
+//   captureUncaught: true,
+//   captureUnhandledRejections: true
+// });
 const log4js = require('log4js');
 log4js.configure({
   appenders: { server: { type: 'file', filename: 'server.log' },terminal:{type:"console"}},
@@ -25,7 +25,7 @@ logger.info("Init Finished")
 
 function listener(request,response)
 {
-    response.writeHead(200,"Success",{"Content-Type":"application/json"})
+    response.writeHead(200,"Success",{"Content-Type":"application/json","Access-Control-Allow-Origin":"null"})
 
     var route=url.parse(request.url).pathname
     logger.debug("Route=",route)
